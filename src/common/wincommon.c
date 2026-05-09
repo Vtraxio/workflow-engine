@@ -8,7 +8,7 @@ void win32_print_wsa_error() {
 
   for (u32 i = 0; i < strlen(buf); i++) {
     if (buf[i] == '\n' || buf[i] == '\r') {
-      buf[i] = ' ';
+      buf[i] = 0;
     }
   }
 

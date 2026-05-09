@@ -16,7 +16,7 @@ int main() {
     utils_dump_bytes(buf, len);
 
     connection_printf(
-        &socket, "HTTP/1.1 200 OK\r\nContent-Length: 13\r\n\r\nHello, World!");
+        &socket, "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 13\r\n\r\nHello, World!");
     connection_destroy(&socket);
     printf("\n\n\n");
   }

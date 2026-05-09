@@ -172,7 +172,7 @@ static bool connection_fill_from_socket(connection* con) {
   u8 tmp[4096];
 
   i32 received = recv(socket, (char*)tmp, sizeof(tmp), 0);
-  if (received <= 0) {
+  if (received == SOCKET_ERROR) {
     LOG_WSA_ERROR("Failed to read socket.");
     return false;
   }

@@ -92,6 +92,13 @@ bool listener_listen(connection* out_socket) {
            addr.sin_addr.S_un.S_un_b.s_b2, addr.sin_addr.S_un.S_un_b.s_b3,
            addr.sin_addr.S_un.S_un_b.s_b4, addr.sin_addr.S_un.S_un_b.s_b1);
 
+  i32 timeout = 1000;
+  if (setsockopt(client_socket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout,
+                 sizeof(timeout)) == SOCKET_ERROR) {
+    LOG_WSA_ERROR("Failed to set socket timeout parameter.");
+    return false;
+  }
+
   connection socket;
   socket.platform_socket = (void*)client_socket;
   socket.read_buf_cap = 4096;
