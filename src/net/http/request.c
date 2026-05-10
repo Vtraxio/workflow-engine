@@ -48,7 +48,7 @@ bool http_request_create(connection* con, http_request* out_request) {
   }
 
   // body
-  char* content_length_str;
+  const char* content_length_str;
   if (http_headers_get_header(result.headers, "content-length",
                               &content_length_str)) {
     u32 content_length = strtol(content_length_str, nullptr, 10);

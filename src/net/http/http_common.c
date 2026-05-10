@@ -9,13 +9,13 @@ bool http_headers_create(http_header** out_headers) {
 
 void http_headers_destroy(http_header* headers) { shfree(headers); }
 
-bool http_headers_set_header(http_header* headers, char* header, char* value) {
+bool http_headers_set_header(http_header* headers, const char* header, const char* value) {
   shput(headers, header, value);
   return true;
 }
 
-bool http_headers_get_header(http_header* headers, char* header,
-                             char** out_value) {
+bool http_headers_get_header(http_header* headers, const char* header,
+                             const char** out_value) {
   http_header* headerp = shgetp_null(headers, header);
 
   if (headerp == nullptr) {

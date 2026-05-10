@@ -4,9 +4,9 @@
 typedef struct http_request {
   char* internal_text;
 
-  char* method;
-  char* path;
-  char* version;
+  const char* method;
+  const char* path;
+  const char* version;
 
   http_header* headers;
 
