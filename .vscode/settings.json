@@ -2,6 +2,9 @@
     "cSpell.words": [
         "includedirs",
         "itow",
+        "shfree",
+        "shgetp",
+        "shput",
         "WSADATA"
     ]
 }

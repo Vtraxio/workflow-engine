@@ -3,6 +3,8 @@
 #include "utils/utils.h"
 #include <stdio.h>
 
+#include "net/http/request.h"
+
 int main() {
   listener_create(8080);
 
@@ -10,13 +12,18 @@ int main() {
     connection socket;
     listener_listen(&socket);
 
-    u8* buf = nullptr;
-    u32 len = 0;
-    connection_read_until(&socket, "\r\n\r\n", &buf, &len);
-    utils_dump_bytes(buf, len);
+    http_request req;
+    http_request_create(&socket, &req);
 
-    connection_printf(
-        &socket, "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 13\r\n\r\nHello, World!");
+    // u8* buf = nullptr;
+    // u32 len = 0;
+    // connection_read_until(&socket, "\r\n\r\n", &buf, &len);
+    // utils_dump_bytes(buf, len);
+
+    connection_printf(&socket,
+                      "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: "
+                      "13\r\n\r\nHello, World!");
+    http_request_destroy(&req);
     connection_destroy(&socket);
     printf("\n\n\n");
   }
