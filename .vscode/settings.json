@@ -4,7 +4,10 @@
         "itow",
         "shfree",
         "shgetp",
+        "shlen",
         "shput",
+        "ultoa",
+        "ULTOSTR",
         "WSADATA"
     ]
 }

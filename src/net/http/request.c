@@ -44,7 +44,7 @@ bool http_request_create(connection* con, http_request* out_request) {
       header_value++;
     }
 
-    http_headers_set_header(result.headers, header_name, header_value);
+    http_headers_set_header(&result.headers, header_name, header_value);
   }
 
   // body

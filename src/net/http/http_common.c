@@ -9,8 +9,8 @@ bool http_headers_create(http_header** out_headers) {
 
 void http_headers_destroy(http_header* headers) { shfree(headers); }
 
-bool http_headers_set_header(http_header* headers, const char* header, const char* value) {
-  shput(headers, header, value);
+bool http_headers_set_header(http_header** headers, const char* header, const char* value) {
+  shput(*headers, header, value);
   return true;
 }
 
